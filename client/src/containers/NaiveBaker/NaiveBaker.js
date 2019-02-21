@@ -3,6 +3,7 @@ import ShowRecipes from '../ShowRecipes/ShowRecipes';
 import classes from './NaiveBaker.css';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import asyncComponent from '../../hoc/asyncComponent';
+import AutoCompleteRoute from '../AutoCompleteRoute/AutoCompleteRoute';
 
 const AsyncNewPost = asyncComponent(() => {
     return import('../NewRecipe/NewRecipe');
@@ -21,6 +22,13 @@ class NaiveBaker extends Component {
                     <nav>
                         <ul>
                             <li><NavLink
+                                to="/search/"
+                                exact
+                                activeClassName="my-active1"
+                                activeStyle={{
+                                    color: '#fa923f',
+                                }}>Search</NavLink></li>
+                            <li><NavLink
                                 to="/posts/"
                                 exact
                                 activeClassName="my-active"
@@ -38,8 +46,8 @@ class NaiveBaker extends Component {
                 </header>
                 <Switch>
                     {this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null}
+                    <Route path="/search/" component={AutoCompleteRoute} />
                     <Route path="/posts" component={ShowRecipes} />
-                    <Route render={() => <h1>Not found</h1>}/>
                 </Switch>
             </div>
         );
