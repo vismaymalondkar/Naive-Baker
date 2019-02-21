@@ -1,0 +1,155 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+
+PATH: 
+  C:\Users\Adarsh\AppData\Local\Temp\yarn--1550600621241-0.9028364429810372;C:\Users\Adarsh\Documents\GitHub\Naive-Baker\node_modules\.bin;C:\Users\Adarsh\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\Adarsh\Documents\GitHub\Naive-Baker\node_modules\.bin;C:\Users\Adarsh\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\Adarsh\AppData\Local\Temp\yarn--1550600617363-0.7312664559060873;C:\Users\Adarsh\Documents\GitHub\Naive-Baker\node_modules\.bin;C:\Users\Adarsh\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\Adarsh\Documents\GitHub\Naive-Baker\node_modules\.bin;C:\Users\Adarsh\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs;C:\Program Files\Python37\Scripts\;C:\Program Files\Python37\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Sublime Text 3;C:\Program Files (x86)\Microsoft VS Code;C:\Program Files (x86)\GtkSharp\2.12\bin;E:\codeblocks\MinGW\bin;C:\Python27;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MATLAB\R2016a\runtime\win64;C:\Program Files\MATLAB\R2016a\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk-11.0.2\bin;c:\program files\python37\Scripts;C:\Program Files (x86)\Yarn\bin\;C:\Users\Adarsh\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\Adarsh\AppData\Local\Programs\Python\Python37-32\;C:\Users\Adarsh\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\PyCharm 2018.3.3\bin;C:\Program Files\JetBrains\PyCharm Edu 2018.3\bin;c:\program files\python37\Scripts;C:\Users\Adarsh\AppData\Local\GitHubDesktop\bin;C:\Users\Adarsh\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  8.12.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\Adarsh\Documents\GitHub\Naive-Baker\client\package.json: Unexpected token } in JSON at position 3525
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:304:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:315:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "naive_baker",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "@babel/core": "7.2.2",
+      "@svgr/webpack": "4.1.0",
+      "axios": "^0.18.0",
+      "babel-core": "7.0.0-bridge.0",
+      "babel-eslint": "9.0.0",
+      "babel-jest": "^24.1.0",
+      "babel-loader": "8.0.5",
+      "babel-plugin-named-asset-import": "^0.3.1",
+      "babel-preset-react-app": "^7.0.1",
+      "bfj": "6.1.1",
+      "case-sensitive-paths-webpack-plugin": "2.2.0",
+      "css-loader": "1.0.0",
+      "dotenv": "6.0.0",
+      "dotenv-expand": "4.2.0",
+      "eslint": "5.12.0",
+      "eslint-config-react-app": "^3.0.7",
+      "eslint-loader": "2.1.1",
+      "eslint-plugin-flowtype": "2.50.1",
+      "eslint-plugin-import": "2.14.0",
+      "eslint-plugin-jsx-a11y": "6.1.2",
+      "eslint-plugin-react": "7.12.4",
+      "file-loader": "2.0.0",
+      "fork-ts-checker-webpack-plugin-alt": "0.4.14",
+      "fs-extra": "7.0.1",
+      "html-webpack-plugin": "4.0.0-alpha.2",
+      "identity-obj-proxy": "3.0.0",
+      "jest": "^24.1.0",
+      "jest-pnp-resolver": "1.0.2",
+      "jest-resolve": "23.6.0",
+      "jest-watch-typeahead": "^0.2.1",
+      "mini-css-extract-plugin": "0.5.0",
+      "optimize-css-assets-webpack-plugin": "5.0.1",
+      "pnp-webpack-plugin": "1.2.1",
+      "postcss-flexbugs-fixes": "4.1.0",
+      "postcss-loader": "3.0.0",
+      "postcss-preset-env": "6.5.0",
+      "postcss-safe-parser": "4.0.1",
+      "react": "^16.8.2",
+      "react-app-polyfill": "^0.2.1",
+      "react-dev-utils": "^7.0.3",
+      "react-dom": "^16.8.2",
+      "react-router": "^4.3.1",
+      "react-router-dom": "^4.3.1",
+      "resolve": "1.10.0",
+      "sass-loader": "7.1.0",
+      "style-loader": "0.23.1",
+      "terser-webpack-plugin": "1.2.2",
+      "url-loader": "1.1.2",
+      "webpack": "4.28.3",
+      "webpack-dev-server": "3.1.14",
+      "webpack-manifest-plugin": "2.0.4",
+      "workbox-webpack-plugin": "3.6.3"
+    },
+    "scripts": {
+      "start": "node scripts/start.js",
+      "build": "node scripts/build.js",
+      "test": "node scripts/test.js"
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "jest": {
+      "collectCoverageFrom": [
+        "src/**/*.{js,jsx,ts,tsx}",
+        "!src/**/*.d.ts"
+      ],
+      "resolver": "jest-pnp-resolver",
+      "setupFiles": [
+        "react-app-polyfill/jsdom"
+      ],
+      "testMatch": [
+        "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+        "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+      ],
+      "testEnvironment": "jsdom",
+      "testURL": "http://localhost",
+      "transform": {
+        "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+        "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+        "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      },
+      "transformIgnorePatterns": [
+        "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+        "^.+\\.module\\.(css|sass|scss)$"
+      ],
+      "moduleNameMapper": {
+        "^react-native$": "react-native-web",
+        "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+      },
+      "moduleFileExtensions": [
+        "web.js",
+        "js",
+        "web.ts",
+        "ts",
+        "web.tsx",
+        "tsx",
+        "json",
+        "web.jsx",
+        "jsx",
+        "node"
+      ],
+      "watchPlugins": [
+        "/Users/smitpatel/Desktop/SEN Project/naive_baker/node_modules/jest-watch-typeahead/filename.js",
+        "/Users/smitpatel/Desktop/SEN Project/naive_baker/node_modules/jest-watch-typeahead/testname.js"
+      ]
+    },
+    "babel": {
+      "presets": [
+        "react-app"
+      ]
+    },
+    
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
