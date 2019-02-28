@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import './style.css';
+import Ingredient from "../components/Ingredient";
+
 class Autocomplete extends Component {
   static propTypes = {
     suggestions: PropTypes.instanceOf(Array)
@@ -98,7 +101,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul class="suggestions">
+          <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -108,16 +111,19 @@ class Autocomplete extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
-                  {suggestion}
-                </li>
+                <div key={suggestion} >
+                  <li className={className}  onClick={onClick}>
+                    {suggestion}
+                  </li>
+                  <Ingredient item={suggestion} />
+                </div>
               );
             })}
           </ul>
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
+          <div className="no-suggestions">
             <em>No suggestions, you're on your own!</em>
           </div>
         );

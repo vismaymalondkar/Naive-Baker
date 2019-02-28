@@ -22,39 +22,41 @@ class App extends Component {
     ]
   };
 
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-      //var temp=this.state.suggestions;
-      //temp.sort();
-      //console.log(temp);
-      //this.setState({suggestions:temp});
+  // componentDidMount() {
+  //   this.callApi()
+  //     .then(res => this.setState({ response: res.express }))
+  //     .catch(err => console.log(err));
+  //     //var temp=this.state.suggestions;
+  //     //temp.sort();
+  //     //console.log(temp);
+  //     //this.setState({suggestions:temp});
+  //     console.log(this.state.responseToPost);
 
-  }
+  // }
 
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
+  // callApi = async () => {
+  //   const response = await fetch('/users');
+  //   console.log(response);
+  //   const body = await response.json();
+  //   console.log(body);
+  //   if (response.status !== 200) throw Error(body.message);
 
-    if (response.status !== 200) throw Error(body.message);
+  //   return body;
+  // };
 
-    return body;
-  };
+  // handleSubmit = async e => {
+  //   e.preventDefault();
+  //   const response = await fetch('/users', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ post: this.state.post }),
+  //   });
+  //   const body = await response.text();
 
-  handleSubmit = async e => {
-    e.preventDefault();
-    const response = await fetch('/api/world', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.post }),
-    });
-    const body = await response.text();
-
-    this.setState({ responseToPost: body });
-  };
+  //   this.setState({ responseToPost: body });
+  // };
   render() {
     return (
       <BrowserRouter>

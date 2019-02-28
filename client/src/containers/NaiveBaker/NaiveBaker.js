@@ -29,7 +29,7 @@ class NaiveBaker extends Component {
                                     color: '#fa923f',
                                 }}>Search</NavLink></li>
                             <li><NavLink
-                                to="/posts/"
+                                to="/users/"
                                 exact
                                 activeClassName="my-active"
                                 activeStyle={{
@@ -47,7 +47,7 @@ class NaiveBaker extends Component {
                 <Switch>
                     {this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null}
                     <Route path="/search/" component={AutoCompleteRoute} />
-                    <Route path="/posts" component={ShowRecipes} />
+                    <Route path="/users" component={ShowRecipes} />
                 </Switch>
             </div>
         );

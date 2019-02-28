@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import Autocomplete from '../../Search/Autocomplete';
 import classes from './AutoCompleteRoute.css';
-
 export default class AutoCompleteRoute extends Component {
     state = {
         suggestions: [
