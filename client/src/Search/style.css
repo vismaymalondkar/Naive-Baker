@@ -2,63 +2,57 @@ body {
     font-family: sans-serif;
   }
   
-  input {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    width: 30%;
-    text-align: center;
-    align-items: center;
+.centerclass input{
+    padding: 5px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 25%;
+    background: #f1f1f1;
   }
   
-  .no-suggestions {
+.nosuggestions {
     color: #999;
     padding: 0.5rem;
     position: relative;
-  }
+}
   
-  .suggestions {
+.suggestions {
     border: 1px solid #999;
     border-top-width: 0;
     list-style: none;
     margin-top: 0;
-    max-height: 143px;
+    max-height: 1000px;
     overflow-y: auto;
     padding-left: 0;
-    width: calc(300px + 1rem);
-  }
+    width: calc(35% + 10px);
+}
   
-  .suggestions li {
+.suggestions li {
     padding: 0.5rem;
-  }
+}
   
-  .suggestion-active,
-  .suggestions li:hover {
+.suggestionactive,
+.suggestions li:hover {
     background-color: #008f68;
     color: #fae042;
     cursor: pointer;
-    font-weight: 700;
-  }
+    font-weight: 70%;
+}
   
-  .suggestions li:not(:last-of-type) {
+.suggestions li:not(:last-of-type) {
     border-bottom: 1px solid #999;
-  }
+}
 
-  button {
-    margin: 5px 0;
+.centerclass button {
+    width: 10%;
     padding: 5px;
-    margin-left: 10px;
-    font: inherit;
-    border: 1px solid #fa923f;
-    background-color: transparent;
-    color: #fa923f;
+    background: #fa923f;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
     cursor: pointer;
 }
-button:hover,
-button:active {
-    color: white;
-    background-color: #fa923f;
-}
 
-.GetStyle{
-  padding: 5px;
+button:hover {
+    background: gray;
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import './style.css';
+import classes from './style.css';
 import Ingredient from "../components/Ingredient";
 
 class Autocomplete extends Component {
@@ -32,11 +32,20 @@ class Autocomplete extends Component {
     const userInput = e.currentTarget.value;
 
     // Filter our suggestions that don't contain the user's input
-    const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
-
+    let filteredSuggestions = [];
+    let newSuggestions=[];
+    for(var i=0; i<suggestions.length; i++)
+    {
+      if(suggestions[i].toLowerCase().indexOf(userInput.toLowerCase()) !== -1)
+      {
+        newSuggestions.push([suggestions[i].toLowerCase().indexOf(userInput.toLowerCase()),suggestions[i]]);
+      }
+    }
+    newSuggestions.sort();
+    for(i=0; i<newSuggestions.length; i++)
+    {
+      filteredSuggestions.push(newSuggestions[i][1]);
+    }
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
@@ -101,21 +110,19 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul className="suggestions">
+          <ul className={classes.suggestions}>
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
               // Flag the active suggestion with a class
               if (index === activeSuggestion) {
-                className = "suggestion-active";
+                className = classes.suggestionactive;
               }
-
               return (
                 <div key={suggestion} >
                   <li className={className}  onClick={onClick}>
-                    {suggestion}
+                    <div>{suggestion}</div>
                   </li>
-                  <Ingredient item={suggestion} />
                 </div>
               );
             })}
@@ -123,7 +130,7 @@ class Autocomplete extends Component {
         );
       } else {
         suggestionsListComponent = (
-          <div className="no-suggestions">
+          <div className={classes.nosuggestions}>
             <em>No suggestions, you're on your own!</em>
           </div>
         );
@@ -132,12 +139,16 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
-        <input
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+        <center className={classes.centerclass}>
+          <input
+            type="text"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={userInput}
+          />
+          <button type="submit"><i className="fa fa-search"></i></button>
+        </center>
         {suggestionsListComponent}
       </Fragment>
        

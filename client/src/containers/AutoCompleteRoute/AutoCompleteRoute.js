@@ -13,7 +13,8 @@ export default class AutoCompleteRoute extends Component {
           "Bread",
           "Rice",
           "Oil",
-          "Spinach"
+          "Spinach",
+          "Eggies"
         ]
       };
       componentDidMount() {
@@ -23,9 +24,9 @@ export default class AutoCompleteRoute extends Component {
         }
   render() {
     return (
-      <div className={classes.AutoComplete}>
+      <center><div className={classes.AutoComplete}>
         <Autocomplete suggestions={this.state.suggestions} />
-      </div>
+      </div></center>
     )
   }
 }

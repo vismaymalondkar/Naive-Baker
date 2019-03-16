@@ -1,23 +1,29 @@
-.Blog ul {
-    list-style: none;
+.Header{
+    padding-bottom: 15px;
+}
+
+.Header ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 100%;
+    overflow: hidden;
+    height: 70px;
+    background-color: #333333;
+  }
+
+.Header li {
+    float: left;
+    padding: 7px;
+  }
+
+.Header li a {
+    display: block;
+    color: white;
     text-align: center;
-}
-
-.Blog li {
-    display: inline-block;
-    margin: 20px;
-}
-
-.Blog a {
+    padding: 16px;
     text-decoration: none;
-    color: black;
-}
-
-.Blog a:hover,
-.Blog a:active,
-.Blog a.active {
-    color: #fa923f;
-}
+  }
+  
+.Header li a:hover {
+    background-color: #111111;
+  }

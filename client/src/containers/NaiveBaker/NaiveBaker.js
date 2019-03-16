@@ -19,7 +19,7 @@ class NaiveBaker extends Component {
         return (
             <div className={classes.Blog}>
                 <header>
-                    <nav>
+                    <nav className={classes.Header}>
                         <ul>
                             <li><NavLink
                                 to="/search/"
@@ -34,12 +34,14 @@ class NaiveBaker extends Component {
                                 activeClassName="my-active"
                                 activeStyle={{
                                     color: '#fa923f',
-                                    textDecoration: 'underline'
                                 }}>Posts</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
+                            }}
+                            activeStyle={{
+                                color: '#fa923f',
                             }}>New Post</NavLink></li>
                         </ul>
                     </nav>

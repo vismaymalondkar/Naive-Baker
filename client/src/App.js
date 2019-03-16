@@ -9,17 +9,6 @@ class App extends Component {
     response: '',
     post: '',
     responseToPost: '',
-    suggestions: [
-      "Carrot",
-      "Butter",
-      "Cheese",
-      "Apple",
-      "Eggs",
-      "Bread",
-      "Rice",
-      "Oil",
-      "Spinach"
-    ]
   };
   // Add suggestions array
   render() {
