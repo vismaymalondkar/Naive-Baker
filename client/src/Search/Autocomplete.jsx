@@ -110,7 +110,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul className={classes.suggestions}>
+          <center><ul className={classes.suggestions} >
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -121,17 +121,17 @@ class Autocomplete extends Component {
               return (
                 <div key={suggestion} >
                   <li className={className}  onClick={onClick}>
-                    <div>{suggestion}</div>
+                    {suggestion}
                   </li>
                 </div>
               );
             })}
-          </ul>
+          </ul></center>
         );
       } else {
         suggestionsListComponent = (
           <div className={classes.nosuggestions}>
-            <em>No suggestions, you're on your own!</em>
+            <center><em>No suggestions, you're on your own!</em></center>
           </div>
         );
       }
@@ -151,7 +151,6 @@ class Autocomplete extends Component {
         </center>
         {suggestionsListComponent}
       </Fragment>
-       
     );
   }
 }

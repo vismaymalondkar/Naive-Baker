@@ -19,37 +19,37 @@ class NaiveBaker extends Component {
         return (
             <div className={classes.Blog}>
                 <header>
-                    <nav className={classes.Header}>
+                    <nav className={classes.Header}> 
                         <ul>
                             <li><NavLink
-                                to="/search/"
+                                to="/getIngredientList/"
                                 exact
                                 activeClassName="my-active1"
                                 activeStyle={{
                                     color: '#fa923f',
                                 }}>Search</NavLink></li>
                             <li><NavLink
-                                to="/users/"
+                                to="/"
                                 exact
                                 activeClassName="my-active"
                                 activeStyle={{
                                     color: '#fa923f',
                                 }}>Posts</NavLink></li>
                             <li><NavLink to={{
-                                pathname: '/new-post',
+                                pathname: '/new-recipe',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
                             }}
                             activeStyle={{
                                 color: '#fa923f',
-                            }}>New Post</NavLink></li>
+                            }}>New Recipe</NavLink></li>
                         </ul>
                     </nav>
                 </header>
                 <Switch>
-                    {this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null}
-                    <Route path="/search/" component={AutoCompleteRoute} />
-                    <Route path="/users" component={ShowRecipes} />
+                    {this.state.auth ? <Route path="/new-recipe" component={AsyncNewPost} /> : null}
+                    <Route path="/getIngredientList/" component={AutoCompleteRoute} />
+                    <Route path="/" component={ShowRecipes} />
                 </Switch>
             </div>
         );
