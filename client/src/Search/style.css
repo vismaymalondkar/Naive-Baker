@@ -21,7 +21,7 @@ body {
     border-top-width: 0;
     list-style: none;
     margin-top: 0;
-    max-height: 1000px;
+    max-height: 400px;
     overflow-y: auto;
     padding-left: 0;
     width: calc(35% + 10px);
@@ -55,4 +55,35 @@ body {
 
 button:hover {
     background: gray;
+}
+
+.selected{
+    position: absolute;
+    bottom:10%;
+    left: 33%;
+    max-height: 25%;
+    width: calc(35%);
+}
+
+.selected ul{
+        border: 1px solid #999;
+        list-style: none;
+        margin-top: 0;
+        overflow-y: auto;
+        padding-left: 0;
+        width: calc(35% + 10px);
+}
+.selected ul li {
+    padding: 0.5rem;
+}
+
+.selected ul li:hover {
+    background-color: #008f68;
+    color: #fae042;
+    cursor: pointer;
+    font-weight: 70%;
+}
+
+.selected ul li:not(:last-of-type) {
+    border-bottom: 1px solid #999;
 }

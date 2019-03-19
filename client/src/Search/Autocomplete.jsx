@@ -16,14 +16,11 @@ class Autocomplete extends Component {
     super(props);
 
     this.state = {
-      // The active selection's index
       activeSuggestion: 0,
-      // The suggestions that match the user's input
       filteredSuggestions: [],
-      // Whether or not the suggestion list is shown
       showSuggestions: false,
-      // What the user has entered
-      userInput: ""
+      userInput: "",
+      selectedIngredients: []
     };
   }
 
@@ -31,7 +28,6 @@ class Autocomplete extends Component {
     const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
 
-    // Filter our suggestions that don't contain the user's input
     let filteredSuggestions = [];
     let newSuggestions=[];
     for(var i=0; i<suggestions.length; i++)
@@ -68,10 +64,14 @@ class Autocomplete extends Component {
 
     // User pressed the enter key
     if (e.keyCode === 13) {
+      let temp=this.state.selectedIngredients;
+      if(!temp.includes(filteredSuggestions[activeSuggestion]))
+        temp.push(filteredSuggestions[activeSuggestion]);
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion]
+        userInput: filteredSuggestions[activeSuggestion],
+        selectedIngredients:temp
       });
     }
     // User pressed the up arrow
@@ -92,6 +92,12 @@ class Autocomplete extends Component {
     }
   };
 
+  deleteIngredientHandler = (ingredientToDelete) => {
+    let temp=this.state.selectedIngredients;
+    temp.splice(ingredientToDelete,1);
+    this.setState({selectedIngredients:temp});
+  }
+
   render() {
     const {
       onChange,
@@ -110,7 +116,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <center><ul className={classes.suggestions} >
+          <center><ul className={classes.suggestions}>
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -137,6 +143,15 @@ class Autocomplete extends Component {
       }
     }
 
+    let printSelectedIngredients= (<ul style={{listStyle:'none'}}>
+        {this.state.selectedIngredients.map((suggestion, index)=>{
+          return (<li onClick={()=>this.deleteIngredientHandler(index)} key={suggestion}>
+           {suggestion}
+          </li>);
+        })}
+        </ul>
+      );
+
     return (
       <Fragment>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -148,8 +163,12 @@ class Autocomplete extends Component {
             value={userInput}
           />
           <button type="submit"><i className="fa fa-search"></i></button>
-        </center>
         {suggestionsListComponent}
+        <div className={classes.selected}>
+        <h3>Selected Ingredients</h3>
+        {printSelectedIngredients}
+        </div>
+        </center>
       </Fragment>
     );
   }

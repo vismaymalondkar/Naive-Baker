@@ -16,7 +16,9 @@ export default class AutoCompleteRoute extends Component {
           "Rice",
           "Oil",
           "Spinach",
-          "Eggies"
+          "Eggies",
+          "champagne",
+          "ice"
         ]
       };
       componentDidMount() {
