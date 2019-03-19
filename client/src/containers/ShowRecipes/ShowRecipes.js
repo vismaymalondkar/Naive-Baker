@@ -22,7 +22,7 @@ class ShowRecipes extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/')
+        axios.get('http://localhost:5000/recipe')
             .then( response => {
                 this.setState({
                 data1: response.data

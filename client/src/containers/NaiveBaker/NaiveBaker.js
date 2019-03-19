@@ -6,18 +6,31 @@ import asyncComponent from '../../hoc/asyncComponent';
 import AutoCompleteRoute from '../AutoCompleteRoute/AutoCompleteRoute';
 import LoginModule from '../../components/LoginModule/LoginModule';
 import SignUpModule from '../../components/SignUpModule/SignUpModule';
+import LogoutModule from '../../components/LogoutModule/LogoutModule';
 
 const AsyncNewPost = asyncComponent(() => {
     return import('../NewRecipe/NewRecipe');
 });
 
 class NaiveBaker extends Component {
-
-    state = {
-        auth: true
-    }
-
     render () {
+
+        const notAuth1=(<li style={{float:'right'}}><NavLink
+                            to="/signup"
+                            exact
+                            activeClassName="myclassname"
+                            activeStyle={{
+                                color: '#fa923f',
+                        }}>Sign Up</NavLink></li>);
+
+        const notAuth2=(<li style={{float:'right'}}><NavLink
+                            to="/login"
+                            exact
+                            activeClassName="my2"
+                            activeStyle={{
+                                color: '#fa923f',
+                        }}>Login</NavLink> </li>);
+
         return (
             <div className={classes.Blog}>
                 <header>
@@ -36,7 +49,7 @@ class NaiveBaker extends Component {
                                 activeClassName="my-active"
                                 activeStyle={{
                                     color: '#fa923f',
-                                }}>Posts</NavLink></li>
+                                }}>Recipes</NavLink></li>
                             <li><NavLink to={{
                                 pathname: '/new-recipe',
                                 hash: '#submit',
@@ -45,29 +58,24 @@ class NaiveBaker extends Component {
                             activeStyle={{
                                 color: '#fa923f',
                             }}>New Recipe</NavLink></li>
-                            <li style={{float:'right'}}><NavLink
-                                to="/signup"
-                                exact
-                                activeClassName="myclassname"
-                                activeStyle={{
-                                    color: '#fa923f',
-                                }}>Sign Up</NavLink></li>
-                            <li style={{float:'right'}}><NavLink
-                                to="/login"
-                                exact
-                                activeClassName="my2"
-                                activeStyle={{
-                                    color: '#fa923f',
-                                }}>Login</NavLink></li>
+                            {!variables.authenticatedUser?notAuth1:(<li style={{float:'right'}}><NavLink
+                            to="/logout"
+                            exact
+                            activeClassName="myclassname"
+                            activeStyle={{
+                                color: '#fa923f',
+                            }}>Logout</NavLink></li>)}
+                            {!variables.authenticatedUser?notAuth2:''}
                         </ul>
                     </nav>
                 </header>
                 <Switch>
-                    {this.state.auth ? <Route path="/new-recipe" component={AsyncNewPost} /> : <Route path="/login" component={LoginModule} />}
+                    <Route path="/new-recipe" component={AsyncNewPost} />
                     <Route path="/getIngredientList" component={AutoCompleteRoute} />
                     <Route path="/recipe" component={ShowRecipes} />
                     <Route path="/login" component={LoginModule} />
                     <Route path="/signup" component={SignUpModule} />
+                    <Route path="/logout" component={LogoutModule} />
                 </Switch>
             </div>
         );
@@ -75,3 +83,7 @@ class NaiveBaker extends Component {
 }
 
 export default NaiveBaker;
+
+export var variables={
+    authenticatedUser:false
+}

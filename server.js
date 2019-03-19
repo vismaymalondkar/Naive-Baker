@@ -22,7 +22,7 @@ const config={
 }
 const pool=new pg.Pool(config);
 var len=0;
-app.get('/', (request, response) => {
+app.get('/recipe', (request, response) => {
 pool.connect(function(err,client,done){
    if (err){
      console.log("no connecttion");
@@ -39,8 +39,9 @@ client.query('select * from naiveBakerSchema.recipes order by numOfLikes desc li
 app.get('/getIngredientList',db.getIngredientsList);
 //when u put ingredient list server returns recipe names as response
 app.post('/putIngredientList',db.putIngredientsList);
-
+app.get('/signup',db.getUsernameList);
 app.post('/signup',db.addUser);
+app.get('/login',db.getUsernameAndPasswordList);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

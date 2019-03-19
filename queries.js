@@ -39,22 +39,42 @@ const addUser = (request,response) => {
   })
 }
 
-  const getRecipes = (request, response) => {
-    rids={}
-    pool.query('select * from naiveBakerSchema.ingredients ', (error, results) => {
-      if (error) {
-        throw error
-      }
-      rids=result.rows;    
-          response.status(200).json(results.rows)
-         })
+const getUsernameList= (request,response) => {
+  pool.query('select userName from naiveBakerSchema.users ', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
 
-  }
+const getUsernameAndPasswordList = (request,response) => {
+  pool.query('select userName,userPass from naiveBakerSchema.users ', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+const getRecipes = (request, response) => {
+  rids={}
+  pool.query('select * from naiveBakerSchema.ingredients ', (error, results) => {
+    if (error) {
+      throw error
+    }
+    rids=result.rows;    
+        response.status(200).json(results.rows)
+        })
+
+}
   
 
 
 module.exports = {
   getIngredientsList,
   putIngredientsList,
-  addUser
+  addUser,
+  getUsernameList,
+  getUsernameAndPasswordList
 }
