@@ -27,13 +27,15 @@ pool.connect(function(err,client,done){
    if (err){
      console.log("no connecttion");
     }
-client.query('select * from naiveBakerSchema.recipes order by numOfLikes desc limit 10',function(err,result){
+client.query('select * from (select * from naiveBakerSchema.recipes order by recipeid) as r order by numOfLikes desc limit 10',function(err,result){
 //  done();
   len;
   response.send(result.rows);
   len=result.rows.length;
 })  }) });
 
+
+app.post('/recipe',db.ingredientListFromId);
 
 
 app.get('/getIngredientList',db.getIngredientsList);
@@ -42,6 +44,11 @@ app.post('/putIngredientList',db.putIngredientsList);
 app.get('/signup',db.getUsernameList);
 app.post('/signup',db.addUser);
 app.get('/login',db.getUsernameAndPasswordList);
+app.post('/newrecipe',db.addRecipe);
+
+app.post('/likerecipe',db.likeRecipe);
+app.post('/dislikerecipe',db.disLikeRecipe);
+app.post('/checklikedrecipe',db.checkLikedRecipe);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

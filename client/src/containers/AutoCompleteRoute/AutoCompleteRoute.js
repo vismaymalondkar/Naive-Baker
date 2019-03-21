@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Autocomplete from '../../Search/Autocomplete';
 import classes from './AutoCompleteRoute.css';
-import axios from 'axios';
+//import axios from 'axios';
 
 export default class AutoCompleteRoute extends Component {
     state = {

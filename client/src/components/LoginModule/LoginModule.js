@@ -17,17 +17,20 @@ class LoginModule extends Component {
 
     loginSubmitHandler = () => {
         var flag=0;
+        var id=0;
         for(var i=0; i<this.state.data.length; i++)
         {
             if(this.state.data[i].username===this.state.username && this.state.password===this.state.data[i].userpass)
             {
                 flag=1;
+                id=this.state.data[i].userid;
             }
         }
         if(flag)
         {
             console.log('Gotcha...!');
             variables.authenticatedUser=true;
+            variables.userID=id;
             this.setState({username:'',password:''});
         }
         else

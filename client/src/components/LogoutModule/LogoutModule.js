@@ -6,6 +6,7 @@ class LogoutModule extends Component {
     render()
     {
         variables.authenticatedUser=false;
+        variables.userID=-1;
         return (<Redirect to="/recipe"/>);
     }
 }

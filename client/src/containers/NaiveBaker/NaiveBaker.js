@@ -7,6 +7,7 @@ import AutoCompleteRoute from '../AutoCompleteRoute/AutoCompleteRoute';
 import LoginModule from '../../components/LoginModule/LoginModule';
 import SignUpModule from '../../components/SignUpModule/SignUpModule';
 import LogoutModule from '../../components/LogoutModule/LogoutModule';
+import logo from '../../assets/logo.png';
 
 const AsyncNewPost = asyncComponent(() => {
     return import('../NewRecipe/NewRecipe');
@@ -36,6 +37,7 @@ class NaiveBaker extends Component {
                 <header>
                     <nav className={classes.Header}> 
                         <ul>
+                            <li><img src={logo} id="icon" alt="User Icon" style={{maxHeight:'50px'}} ></img></li>
                             <li><NavLink
                                 to="/getIngredientList"
                                 exact
@@ -51,7 +53,7 @@ class NaiveBaker extends Component {
                                     color: '#fa923f',
                                 }}>Recipes</NavLink></li>
                             <li><NavLink to={{
-                                pathname: '/new-recipe',
+                                pathname: '/newrecipe',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
                             }}
@@ -59,24 +61,44 @@ class NaiveBaker extends Component {
                                 color: '#fa923f',
                             }}>New Recipe</NavLink></li>
                             {!variables.authenticatedUser?notAuth1:(<li style={{float:'right'}}><NavLink
-                            to="/logout"
-                            exact
-                            activeClassName="myclassname"
-                            activeStyle={{
-                                color: '#fa923f',
-                            }}>Logout</NavLink></li>)}
+                                                                        to="/logout"
+                                                                        exact
+                                                                        activeClassName="myclassname"
+                                                                        activeStyle={{
+                                                                            color: '#fa923f',
+                                                                    }}>Logout</NavLink></li>)}
                             {!variables.authenticatedUser?notAuth2:''}
                         </ul>
                     </nav>
                 </header>
                 <Switch>
-                    <Route path="/new-recipe" component={AsyncNewPost} />
+                    <Route path="/newrecipe" component={AsyncNewPost} />
                     <Route path="/getIngredientList" component={AutoCompleteRoute} />
                     <Route path="/recipe" component={ShowRecipes} />
                     <Route path="/login" component={LoginModule} />
                     <Route path="/signup" component={SignUpModule} />
                     <Route path="/logout" component={LogoutModule} />
                 </Switch>
+                {/* <footer>
+                    <nav className={classes.Footer} >
+                        <ul>
+                            <li><img src={logo} id="icon" alt="User Icon" style={{maxHeight:'50px'}} ></img></li>
+                            <li><a>Naive Baker</a></li>
+                            <li style={{float:'right'}}><NavLink
+                                    to="/contributors"
+                                    exact
+                                    activeStyle={{
+                                        color: '#fa923f',
+                                }}>Contributors</NavLink></li>
+                            <li style={{float:'right'}}><NavLink
+                                    to="/about"
+                                    exact
+                                    activeStyle={{
+                                        color: '#fa923f',
+                                    }}>About</NavLink></li>
+                        </ul>
+                    </nav>
+                </footer> */}
             </div>
         );
     }
@@ -85,5 +107,6 @@ class NaiveBaker extends Component {
 export default NaiveBaker;
 
 export var variables={
-    authenticatedUser:false
+    authenticatedUser:false,
+    userID:-1
 }
