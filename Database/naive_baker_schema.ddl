@@ -126,3 +126,7 @@ CREATE TABLE userAllergy(
 	FOREIGN KEY(userId) REFERENCES users(userId) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY(allergyName) REFERENCES allergies(allergyName) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE loggedInUser(
+	userID int
+);

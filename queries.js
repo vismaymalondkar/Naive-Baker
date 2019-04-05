@@ -280,6 +280,35 @@ const getCuisines = (request, response) => {
    })
 }
 
+const loggedInUser = (request, response) => {
+  pool.query('select * from naivebakerschema.loggedinuser', (error, results) => {
+    if (error) {
+      throw error
+    }   
+    response.status(200).json(results.rows)
+   })
+}
+
+const loginUser = (request, response) => {
+  const data=request.body;
+  console.log(data);
+  pool.query('insert into naivebakerschema.loggedinuser (userid) values ('+data.id+');', (error, results) => {
+    if (error) {
+      throw error
+    }   
+    response.status(200).json(results.rows)
+   })
+}
+
+const logoutUser = (request, response) => {
+  pool.query('delete from naivebakerschema.loggedinuser;', (error, results) => {
+    if (error) {
+      throw error
+    }   
+    response.status(200).json(results.rows)
+   })
+}
+
 module.exports = {
   Search,
   SearchAll,
@@ -295,5 +324,8 @@ module.exports = {
   checkLikedRecipe,
   getCategories,
   getMealTypes,
-  getCuisines
+  getCuisines,
+  loggedInUser,
+  loginUser,
+  logoutUser
 }

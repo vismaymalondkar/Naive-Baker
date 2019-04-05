@@ -41,7 +41,7 @@ class SignUpModule extends Component {
             flag=2;
         if(!flag)
         {
-            axios.post('/signup',this.state);
+            axios.post('http://localhost:5000/signup',this.state);
             this.setState({auth:true});
         }
         else

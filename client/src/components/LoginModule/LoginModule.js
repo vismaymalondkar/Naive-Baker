@@ -28,7 +28,9 @@ class LoginModule extends Component {
         }
         if(flag)
         {
+            let data={'id':id};
             console.log('Gotcha...!');
+            axios.post('http://localhost:5000/loggedInUser',data);
             variables.authenticatedUser=true;
             variables.userID=id;
             this.setState({username:'',password:''});

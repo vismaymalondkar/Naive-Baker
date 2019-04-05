@@ -1,19 +1,37 @@
 import React,{ Component } from 'react';
 import ShowRecipes from '../ShowRecipes/ShowRecipes';
 import classes from './NaiveBaker.css';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import asyncComponent from '../../hoc/asyncComponent';
 import AutoCompleteRoute from '../AutoCompleteRoute/AutoCompleteRoute';
 import LoginModule from '../../components/LoginModule/LoginModule';
 import SignUpModule from '../../components/SignUpModule/SignUpModule';
 import LogoutModule from '../../components/LogoutModule/LogoutModule';
 import logo from '../../assets/logo.png';
+import axios from 'axios';
 
 const AsyncNewPost = asyncComponent(() => {
     return import('../NewRecipe/NewRecipe');
 });
 
 class NaiveBaker extends Component {
+
+    state={
+        auth:false
+    }
+    componentDidMount(){
+        axios.get('http://localhost:5000/loggedInUser')
+            .then( response => {
+                if(response.data.length !== 0){
+                    variables.authenticatedUser=true;
+                    variables.userID=response.data.userID;
+                    this.setState({auth:true});
+                }
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
     render () {
 
         const notAuth1=(<li style={{float:'right'}}><NavLink
@@ -78,6 +96,7 @@ class NaiveBaker extends Component {
                     <Route path="/login" component={LoginModule} />
                     <Route path="/signup" component={SignUpModule} />
                     <Route path="/logout" component={LogoutModule} />
+                    <Redirect from="*" to="/recipe" />
                 </Switch>
                 {/* <footer>
                     <nav className={classes.Footer} >

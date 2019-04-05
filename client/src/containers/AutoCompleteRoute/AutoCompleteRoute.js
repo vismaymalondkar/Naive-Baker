@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import Search from '../../Search/Search';
-import classes from './AutoCompleteRoute.css';
 import axios from 'axios';
 
 export default class AutoCompleteRoute extends Component {

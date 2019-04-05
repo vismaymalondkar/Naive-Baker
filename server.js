@@ -36,7 +36,9 @@ client.query('select * from (select * from naiveBakerSchema.recipes order by rec
 
 
 app.post('/recipe',db.ingredientListFromId);
-
+app.get('/loggedInUser',db.loggedInUser);
+app.post('/loggedInUser',db.loginUser);
+app.post('/logoutUser',db.logoutUser)
 
 app.get('/getIngredientList',db.getIngredientsList);
 //when u put ingredient list server returns recipe names as response
