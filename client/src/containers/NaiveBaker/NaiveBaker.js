@@ -19,12 +19,12 @@ class NaiveBaker extends Component {
     state={
         auth:false
     }
-    componentDidMount(){
+    componentWillMount(){
         axios.get('http://localhost:5000/loggedInUser')
             .then( response => {
                 if(response.data.length !== 0){
+                    variables.userID=response.data[0].userid;
                     variables.authenticatedUser=true;
-                    variables.userID=response.data.userID;
                     this.setState({auth:true});
                 }
         }).catch(function (error) {
