@@ -77,6 +77,8 @@ class Search extends Component
             [update.removeList]:  prevState[update.removeList].filter(item => item !== update.item)
             })
         );
+
+        //this.searchButton();
     }
 
     checkboxUpdates(update)
@@ -102,6 +104,8 @@ class Search extends Component
             [update.removeList]: prevState[update.removeList].filter(item => item[update.id] !== parseInt(update.value))
             })
         );
+
+        //this.searchButton();
     }
 
     fetchRecipes(selectedItems)
@@ -135,7 +139,7 @@ class Search extends Component
                             removeList = "selectedIngredients"
                         />
 
-                        <div className = "app-selectionbox-wrapper">
+                        <div className = "appSelectionboxWrapper">
                         <SelectionBox 
                             placeholder = "Enter Ingredient"
                             updateSelected = {this.updateSelected} 
@@ -183,7 +187,6 @@ class Search extends Component
                 </div>
                 <div className = {classes.appResults}>
                         <SearchResult 
-                            selectedIngredients = {this.state.selectedIngredients}
                             recipes = {this.state.fetchedRecipes}
                         />
                 </div>

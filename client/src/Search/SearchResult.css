@@ -1,9 +1,7 @@
-.searchresultContainer {
+.Posts {
     display: flex;
-    align-items: center;
+    flex-flow: row wrap;
     justify-content: center;
-}
-
-.fancystuff {
-    text-decoration: initial;
+    width: 80%;
+    margin: auto;
 }

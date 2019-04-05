@@ -13,3 +13,7 @@
     vertical-align: middle;
     border-radius: 0.5rem;
 }
+
+.checkboxLabel {
+    display: inline-block;
+}

@@ -14,7 +14,7 @@ class Checkbox extends Component
             <div className = {classes.checkboxContainer}>
             <input 
                 type = "checkbox" 
-                name =  {this.props.name}
+                name = {this.props.name} 
                 checked = {this.props.checked} 
                 onChange = {this.props.onChange} 
             />

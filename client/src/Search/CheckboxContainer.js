@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Checkbox from './Checkbox';
 import classes from './CheckboxContainer.css';
@@ -25,7 +24,7 @@ class CheckboxContainer extends React.Component
       <div className = {classes.checkboxcontainerContainer}>
         {header}
         {this.props.items.map(item => (
-            <label key = {item[this.props.id]}>
+            <label key = {item[this.props.id]} className = {classes.checkboxLabel}>
                 {item[this.props.name]}
                 <Checkbox 
                     name = {item[this.props.id]} 
