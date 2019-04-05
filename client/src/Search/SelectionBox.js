@@ -88,6 +88,7 @@ class SelectionBox extends Component
         const theme = {
             container: {
                 display: 'inline-block', 
+                
             },
             input: {
                 display: 'inline-block', 

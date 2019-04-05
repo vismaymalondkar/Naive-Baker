@@ -1,9 +1,10 @@
-body > #root > div {
+/* body > #root > div {
     height: 100vh;
-}
+} */
 
 .appContainer {
     width: 100%;
+    height: 100%;
     margin: 0;
 }
 
@@ -12,10 +13,8 @@ body > #root > div {
     float: left;
     background-color: #424242;
     height: 100%;
-    overflow:hidden; 
-    overflow-x:auto;
-    overflow:hidden; 
-    overflow-y:auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 .appSelectionboxWrapper {
@@ -26,7 +25,7 @@ body > #root > div {
 
 .appResults {
     width: 75%;
-    margin-inline-start: 20%;
+    display: inline-block;
 }
 
 .appButtonWrapper {

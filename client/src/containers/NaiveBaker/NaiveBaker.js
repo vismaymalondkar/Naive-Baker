@@ -89,6 +89,7 @@ class NaiveBaker extends Component {
                         </ul>
                     </nav>
                 </header>
+                <div className = {classes.AutoCompleteRouteContainer}>
                 <Switch>
                     <Route path="/newrecipe" component={AsyncNewPost} />
                     <Route path="/getIngredientList" component={AutoCompleteRoute} />
@@ -98,6 +99,7 @@ class NaiveBaker extends Component {
                     <Route path="/logout" component={LogoutModule} />
                     <Redirect from="*" to="/recipe" />
                 </Switch>
+                </div>
                 {/* <footer>
                     <nav className={classes.Footer} >
                         <ul>
