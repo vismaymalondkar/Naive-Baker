@@ -16,7 +16,7 @@ class SignUpModule extends Component {
         auth:false
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get('http://localhost:5000/signup')
             .then( response => {
                 this.setState({

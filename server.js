@@ -28,7 +28,7 @@ pool.connect(function(err,client,done){
      console.log("no connecttion");
     }
 client.query('select * from (select * from naiveBakerSchema.recipes order by recipeid) as r order by numOfLikes desc limit 10',function(err,result){
-//  done();
+ done();
   len;
   response.send(result.rows);
   len=result.rows.length;
@@ -49,6 +49,13 @@ app.post('/newrecipe',db.addRecipe);
 app.post('/likerecipe',db.likeRecipe);
 app.post('/dislikerecipe',db.disLikeRecipe);
 app.post('/checklikedrecipe',db.checkLikedRecipe);
+
+app.post('/Search',db.Search);
+app.post('/SearchAll',db.SearchAll);
+
+app.get('/getCategories',db.getCategories);
+app.get('/getMealTypes',db.getMealTypes);
+app.get('/getCuisines',db.getCuisines);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

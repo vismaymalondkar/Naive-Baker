@@ -14,8 +14,8 @@ class ShowRecipes extends Component {
         whichRecipe: null
     }
 
-    componentDidMount=async() =>{
-        await axios.get('http://localhost:5000/recipe')
+    componentWillMount=async() =>{
+         axios.get('http://localhost:5000/recipe')
             .then( response => {
                 this.setState({
                 data: response.data

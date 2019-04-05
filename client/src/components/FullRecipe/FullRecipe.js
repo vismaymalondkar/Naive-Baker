@@ -12,7 +12,7 @@ class FullRecipe extends Component {
         count:0
     }
 
-    likeHandler = () => {
+    likeHandler = async() => {
         if(variables.authenticatedUser)
         {
             let recipe=this.props.recipe;
@@ -50,9 +50,11 @@ class FullRecipe extends Component {
         }
         let showRecipe=null;
         let classLike=classes.buttonLike;
+        let likeString = 'Like';
         if(this.state.toggleClass)
         {
             classLike=classes.liked;
+            likeString='Liked';
         }
         if(this.props.recipe)
         {
@@ -69,7 +71,7 @@ class FullRecipe extends Component {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                 <button className={[classes.button,classLike].join(' ')} onClick={this.likeHandler}>
                     <i className={classes.fa}><i className='fa fa-heart'></i></i>
-                    <span>Like</span>
+                    <span>{likeString}</span>
                 </button>
                 {this.state.like?<Redirect to='/login' />:''}
             </div>);

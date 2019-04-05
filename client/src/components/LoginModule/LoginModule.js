@@ -39,7 +39,7 @@ class LoginModule extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get('http://localhost:5000/login')
             .then( response => {
                 this.setState({

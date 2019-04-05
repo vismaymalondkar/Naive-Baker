@@ -1,48 +1,37 @@
 import React, { Component } from 'react'
 
-import Autocomplete from '../../Search/Autocomplete';
+import Search from '../../Search/Search';
 import classes from './AutoCompleteRoute.css';
-//import axios from 'axios';
+import axios from 'axios';
 
 export default class AutoCompleteRoute extends Component {
     state = {
-        suggestions: [
-          "Carrot",
-          "Butter",
-          "Cheese",
-          "Apple",
-          "Eggs",
-          "Bread",
-          "Rice",
-          "Oil",
-          "Spinach",
-          "Eggies",
-          "champagne",
-          "ice"
-        ]
+        suggestions: []
       };
-      componentDidMount() {
-        // axios.get('http://localhost:5000/getIngredientList')
-        //     .then( response => {
-        //         this.setState({
-        //         suggestions: response.data.ingredient_name
-        //     });
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // }).then(()=> {
-        //     console.log(this.state.suggestions);
-        //     var temp=this.state.suggestions;
-        //     temp.sort();
-        //     this.setState({suggestions:temp});
-        // });
+      componentWillMount() {
+        axios.get('http://localhost:5000/getIngredientList')
+            .then( response => {
+              var tmp=this.state.suggestions;
+            for(var i=0; i<response.data.length;i++)
+            {
+              tmp.push(response.data[i].ingredientname);
+            }
+            this.setState({
+              suggestions: tmp
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        }).then(()=> {
+            var temp=this.state.suggestions;
+            temp.sort();
+            this.setState({suggestions:temp});
+        });
           
         }
   render() {
     return (
-      <div className={classes.AutoComplete}>
-        <Autocomplete suggestions={this.state.suggestions} />
-      </div>
+        <Search suggestions={this.state.suggestions} />
     )
   }
 }
