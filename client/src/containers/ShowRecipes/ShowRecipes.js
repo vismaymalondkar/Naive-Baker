@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ShowRecipe from '../../components/ShowRecipe/ShowRecipe';
 import axios from 'axios';
 import classes from './ShowRecipes.css';
-import Aux from '../../hoc/Aux/Aux';
+import Auxil from '../../hoc/Auxil/Auxil';
 import Modal from '../../components/UI/Modal/Modal';
 import FullRecipe from '../../components/FullRecipe/FullRecipe';
 
@@ -56,14 +56,14 @@ class ShowRecipes extends Component {
         let fullRecipeShow = <FullRecipe recipe={this.state.whichRecipe} />;
 
         return (
-            <Aux>
+            <Auxil>
                 <Modal show={this.state.fullRecipe} modalClosed={this.cancelHandler}>
                     {fullRecipeShow}
                 </Modal>
                 <div className={classes.Posts}>
                     {recipes}
                 </div>
-            </Aux>
+            </Auxil>
         );
     }
 }
