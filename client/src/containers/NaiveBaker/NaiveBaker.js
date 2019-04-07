@@ -24,7 +24,7 @@ class NaiveBaker extends Component {
             .then( response => {
                 if(response.data.length !== 0){
                     variables.authenticatedUser=true;
-                    variables.userID=response.data.userID;
+                    variables.userID=response.data[0].userid;
                     this.setState({auth:true});
                 }
         }).catch(function (error) {

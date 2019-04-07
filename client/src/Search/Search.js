@@ -5,6 +5,7 @@ import SelectionBox from './SelectionBox';
 import CheckboxContainer from './CheckboxContainer';
 import DisplaySelected from './DisplaySelected';
 import classes from './Search.css';
+import ExtraFilers from './ExtraFilters'
 
 class Search extends Component 
 {
@@ -16,8 +17,9 @@ class Search extends Component
             listCategories: [],
             listMealTypes: [],
             listCuisines: [],
-            cookingTime: 0,
-            calories: 0,
+            cookingTimeHr: null,
+            cookingTimeMin: null,
+            calories: null,
 
             selectedIngredients: [],
             fetchedRecipes: []
@@ -27,6 +29,7 @@ class Search extends Component
         this.updateSelected = this.updateSelected.bind(this);
         this.checkboxUpdates = this.checkboxUpdates.bind(this);
         this.removeSelected = this.removeSelected.bind(this);
+        this.onChangeExtraFilters = this.onChangeExtraFilters.bind(this)
         this.fetchRecipes = this.fetchRecipes.bind(this); 
     }
 
@@ -75,10 +78,9 @@ class Search extends Component
         this.setState(prevState => ({
             [update.addList]: [...prevState[update.addList], update.item],
             [update.removeList]:  prevState[update.removeList].filter(item => item !== update.item)
-            })
-        );
-
-        //this.searchButton();
+            }),
+            this.searchButton
+        )
     }
 
     checkboxUpdates(update)
@@ -93,7 +95,8 @@ class Search extends Component
                     prevState[update.identifier][index] = update.item.isChecked;
                 
                 return prevState;
-            }
+            },
+            this.searchButton
         );
     }
 
@@ -102,10 +105,29 @@ class Search extends Component
         this.setState(prevState => ({
             [update.addList]: [...prevState[update.addList], prevState[update.removeList].find(item => item[update.id] === parseInt(update.value))],
             [update.removeList]: prevState[update.removeList].filter(item => item[update.id] !== parseInt(update.value))
-            })
-        );
+            }),
+            this.searchButton
+        )
+    }
 
-        //this.searchButton();
+    onChangeExtraFilters(e)
+    {
+        switch(e.target.name)
+        {
+            case "calories": 
+                this.setState({calories: e.target.value}, this.searchButton);
+                break;
+
+            case "cookingTimeHr": 
+                this.setState({cookingTimeHr: e.target.value}, this.searchButton);
+                break;
+
+            case "cookingTimeMin": 
+                this.setState({cookingTimeMin: e.target.value}, this.searchButton);
+                break;
+
+            default:
+        }
     }
 
     fetchRecipes(selectedItems)
@@ -115,8 +137,8 @@ class Search extends Component
             category: selectedItems.selectedCategories,
             mealType: selectedItems.selectedMealTypes,
             cuisine: selectedItems.selectedCuisines,
-            cookingTime: 8000,
-            calories: 8000
+            cookingTime: this.state.cookingTimeHr*60 + this.state.cookingTimeMin,
+            calories: this.state.calories
         }
 
         axios.post('http://localhost:5000/Search',body)
@@ -129,7 +151,7 @@ class Search extends Component
         return (  
             <div className = {classes.appContainer}>
                 <div className = {classes.appSidebar}>
-                         <DisplaySelected 
+                        <DisplaySelected 
                             placeholder = "Selected Ingredients"
                             removeSelected = {this.removeSelected} 
                             name = "ingredientname"
@@ -174,6 +196,13 @@ class Search extends Component
                             id = "cuisine"
                             items = {this.state.listCuisines}
                             identifier = "listCuisines"
+                        />
+
+                        <ExtraFilers 
+                            onChange = {this.onChangeExtraFilters}
+                            calories = {this.state.calories}
+                            cookingTimeHr = {this.state.cookingTimeHr}
+                            cookingTimeMin = {this.state.cookingTimeMin}
                         />
                         
                         <div className = {classes.appButtonWrapper}>

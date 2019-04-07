@@ -86,11 +86,13 @@ const putIngredientsList = (request, response) => {
         for(let i=0;i<id.length;i++) {culist=culist.concat('\''); culist=culist.concat(id[i]); culist=culist.concat('\''); if(i!=id.length-1)culist=culist.concat(",");}
   culist=culist.concat(")"); if(culist.length === 2)  culist = "(null)";  console.log(culist);
     
+    var calories = data.calories ? " and r.calories <= "+data.calories : "";
+    var cookingTime = data.cookingTime ? " and r.cookingtime <= " + data.cookingTime : "";
+
     let string ="with total_ingredients as(select count(*) from naivebakerschema.ingredients as i  where i.ingredientid in "+ inglist+ 
     "),recipe_ingredient_count as(select ri.recipeid, count(*) as total  from naivebakerschema.recipeingredient as ri "
     +"   where ri.ingredientid in "+ inglist+ " group by 1 ), filtered_recipes as( select * from naivebakerschema.recipes as r "
-    +"where r.category in "+ catlist+" and r.mealtype in "+ mealist+ " and r.cookingtime <= " + data.cookingTime+ " and r.calories <= "+
-    data.calories+" and r.cuisine in "+ culist+"   ) select *  from filtered_recipes as fr where (select * from total_ingredients)"
+    +"where r.category in "+ catlist+" and r.mealtype in "+ mealist+ cookingTime + calories +" and r.cuisine in "+ culist+"   ) select *  from filtered_recipes as fr where (select * from total_ingredients)"
    + " = (select ric.total from recipe_ingredient_count as ric where ric.recipeid=fr.recipeid);"
 console.log(string);
 
