@@ -1,4 +1,4 @@
-SET search_path TO naiveBakerSchema; 
+SET search_path TO naiveBakerSchema2; 
 
 --CREATE EXTENSION citext; --For emails
 --CREATE EXTENSION pgcrypto; --For passwords
@@ -29,7 +29,7 @@ VALUES
 ('cilantro'),
 ('raisins'),
 ('buttermilk'),
-('Parmesan cheese'),
+('parmesan cheese'),
 ('basil'),
 ('oats'),
 ('almonds'),

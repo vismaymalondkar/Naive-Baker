@@ -1,9 +1,7 @@
-DROP SCHEMA IF EXISTS naiveBakerSchema CASCADE;
-CREATE SCHEMA naiveBakerSchema; 
-SET search_path TO naiveBakerSchema; 
+DROP SCHEMA IF EXISTS naiveBakerSchema2 CASCADE;
+CREATE SCHEMA naiveBakerSchema2; 
+SET search_path TO naiveBakerSchema2; 
 
-CREATE EXTENSION citext; --For emails
-CREATE EXTENSION pgcrypto; --For passwords
 
 CREATE TYPE userT AS ENUM('REGULAR', 'PREMIUM', 'CHEF');
 CREATE TYPE categoryT AS ENUM('VEG', 'NON-VEG', 'CONTAINS-EGGS', 'VEGAN');
@@ -12,9 +10,11 @@ CREATE TYPE mealT AS ENUM('BREAKFAST', 'LUNCH', 'DINNER');
 CREATE TABLE users(
 	userId serial,
 	userName varchar(100) NOT null,
-	userFullName varchar(100) NOT null,
+	userFirstName varchar(100) NOT null,
+	userLastName text NOT null,
 	userPass text NOT null,
-	email citext UNIQUE,
+	email text UNIQUE,
+	userType text NOT null,
 	
 	PRIMARY KEY(userId)
 );
@@ -85,8 +85,8 @@ CREATE TABLE ingredients(
 );
 
 CREATE TABLE recipeIngredient(
-	recipeId serial,
-	ingredientId serial,
+	recipeId int,
+	ingredientId int,
 	amountRequired text,
 	
 	PRIMARY KEY(recipeId, ingredientId),
@@ -128,5 +128,7 @@ CREATE TABLE userAllergy(
 );
 
 CREATE TABLE loggedInUser(
-	userID int
+	userID int,
+	firstname text,
+	userType text
 );
